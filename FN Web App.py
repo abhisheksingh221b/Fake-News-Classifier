@@ -7,13 +7,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from PIL import Image
+import os
+
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
 vectorizer = TfidfVectorizer()
-vector_form = pickle.load(open('C:/Users/Asus/Documents/FN Web app/Fake News/vector1.pkl', 'rb'))
-loaded_model = pickle.load(open('C:/Users/Asus/Documents/FN Web app/Fake News 2/model2.pkl', 'rb'))
+vector_form_path = 'vector1.pkl'
+model_path = 'model2.pkl'
+
+vector_form = pickle.load(open(vector_form_path, 'rb'))
+loaded_model = pickle.load(open(model_path, 'rb'))
 
 lemmatizer = WordNetLemmatizer()
 
@@ -29,31 +34,28 @@ def lemmatization(content):
 
     return lemmatized_content
 
-
 def fake_news(news):
-    news=lemmatization(news)
-    input_data=[news]
-    vector_form1=vector_form.transform(input_data)
+    news = lemmatization(news)
+    input_data = [news]
+    vector_form1 = vector_form.transform(input_data)
     prediction = loaded_model.predict(vector_form1)
     return prediction
 
 def main():
-    st.title('Fake News Classification app ')
-    st.subheader("Input the News content below")
-    sentence = st.text_area( "",height=200)        
-    predict_btt = st.button("predict") 
-    if predict_btt:
-        prediction_class=fake_news(sentence)
-        print(prediction_class)
+    st.title('Fake News Classification App')
+    st.subheader("Input the news content below")
+    sentence = st.text_area("", height=200)
+    predict_btn = st.button("Predict")
+    if predict_btn:
+        prediction_class = fake_news(sentence)
         if prediction_class == [0]:
             st.success('Reliable')
-        if prediction_class == [1]:
+        elif prediction_class == [1]:
             st.warning('Unreliable')
-            
-            
+
 if __name__ == '__main__':
-     main()
-           
+    main()
+
             
             
             
