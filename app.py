@@ -13,8 +13,8 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 vectorizer = TfidfVectorizer()
-vector_form_path = 'vector1.pkl'
-model_path = 'model2.pkl'
+vector_form_path = 'Fake-News-Clssifier/vector1.pkl'
+model_path = 'Fake-News-Clssifier/model2.pkl'
 
 vector_form = pickle.load(open(vector_form_path, 'rb'))
 loaded_model = pickle.load(open(model_path, 'rb'))
