@@ -41,7 +41,7 @@ def fake_news(news):
     return prediction
 
 def main():
-    st.title('Fake News Classification App')
+    st.title('Fake News Classifier')
     st.subheader("Input the news content below")
     sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
