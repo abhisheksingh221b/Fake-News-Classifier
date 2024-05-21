@@ -7,7 +7,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from PIL import Image
-import os
 
 nltk.download('punkt')
 nltk.download('stopwords')
