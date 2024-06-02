@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 import pickle
 import re
 import nltk
@@ -43,11 +44,11 @@ def main():
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
 
-    # Set background image using HTML and CSS
+    # Set background image
     image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
     st.image(image, use_column_width=True)
 
-
+    # Input text
     sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
     if predict_btn:
