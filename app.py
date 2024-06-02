@@ -41,14 +41,6 @@ def fake_news(news):
     return prediction
 
 def main():
-    st.markdown("""
-        <style>
-        body {
-            background-image: url('https://unsplash.com/photos/newspaper-on-black-wooden-table-aett4u0y8Qk');
-            background-size: cover;
-        }
-        </style>
-        """, unsafe_allow_html=True)
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
     sentence = st.text_area("", height=200)
