@@ -44,17 +44,9 @@ def main():
     st.subheader("Input the news content below")
 
     # Set background image using HTML and CSS
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-image: url('yang-xia-aett4u0y8Qk-unsplash.jpg');
-            background-size: cover;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+  image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
+    st.image(image, use_column_width=True)
+
 
     sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
