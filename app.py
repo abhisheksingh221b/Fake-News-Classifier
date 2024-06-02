@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import base64
 import pickle
 import re
 import nltk
@@ -40,13 +41,25 @@ def fake_news(news):
     prediction = loaded_model.predict(vector_form1)
     return prediction
 
+def set_background_image(image_path):
+    encoded_image = base64.b64encode(open(image_path, 'rb').read()).decode()
+    st.markdown(
+        f"""
+        <style>
+        .reportview-container {{
+            background: url('data:image/jpg;base64,{encoded_image}');
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 def main():
+    set_background_image('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
+    
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
-
-    # Set background image
-    image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
-    st.image(image, use_column_width=True)
 
     # Input text
     sentence = st.text_area("", height=200)
@@ -60,6 +73,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
