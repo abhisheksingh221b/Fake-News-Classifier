@@ -44,8 +44,10 @@ def set_background_image(url):
         f"""
         <style>
         .stApp {{
-            background: url("{url}");
+            background-image: url("{url}");
             background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }}
         </style>
         """,
@@ -57,7 +59,7 @@ def main():
     st.subheader("Input the news content below")
 
     # Set background image using a URL
-    background_image_url = "https://unsplash.com/photos/man-sitting-on-chair-holding-newspaper-on-fire-FPNnKfjcbNU"  
+    background_image_url = "https://images.unsplash.com/photo-1565120130293-3b1ae4d6b30a"  # Using the provided URL
     set_background_image(background_image_url)
 
     sentence = st.text_area("", height=200)
