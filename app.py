@@ -44,7 +44,7 @@ def main():
     st.markdown("""
         <style>
         body {
-            background-image: url('yang-xia-aett4u0y8Qk-unsplash.jpg');
+            background-image: url('https://unsplash.com/photos/newspaper-on-black-wooden-table-aett4u0y8Qk');
             background-size: cover;
         }
         </style>
