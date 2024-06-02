@@ -45,7 +45,7 @@ def main():
     st.subheader("Input the news content below")
     
     # Load background image
-    background_image = Image.open('background_image.jpg')
+    background_image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')
     
     # Display background image
     st.image(background_image, use_column_width=True)
