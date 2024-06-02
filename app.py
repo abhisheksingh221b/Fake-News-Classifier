@@ -6,7 +6,6 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-from PIL import Image
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -40,9 +39,27 @@ def fake_news(news):
     prediction = loaded_model.predict(vector_form1)
     return prediction
 
+def set_background_image(url):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background: url("{url}");
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 def main():
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
+
+    # Set background image using a URL
+    background_image_url = "https://unsplash.com/photos/man-sitting-on-chair-holding-newspaper-on-fire-FPNnKfjcbNU"  
+    set_background_image(background_image_url)
+
     sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
     if predict_btn:
