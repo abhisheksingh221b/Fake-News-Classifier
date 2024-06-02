@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 import pickle
 import re
 import nltk
@@ -39,30 +40,17 @@ def fake_news(news):
     prediction = loaded_model.predict(vector_form1)
     return prediction
 
-def set_background_image(url):
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("{url}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
 def main():
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
-
-    # Set background image using a URL
-    background_image_url = "https://images.unsplash.com/photo-1565120130293-3b1ae4d6b30a"  # Using the provided URL
-    set_background_image(background_image_url)
-
-    sentence = st.text_area("", height=200)
+    
+    # Load background image
+    background_image = Image.open('background_image.jpg')
+    
+    # Display background image
+    st.image(background_image, use_column_width=True)
+    
+    sentence = st.text_area("Enter the news content:", height=200)
     predict_btn = st.button("Predict")
     if predict_btn:
         prediction_class = fake_news(sentence)
