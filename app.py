@@ -43,12 +43,7 @@ def fake_news(news):
 def main():
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
-    sentence = st.text_area("Input Text", height=200)
-
-    # Store the input text
-    input_text = st.session_state.input_text if "input_text" in st.session_state else ""
-    if sentence != input_text:
-        st.session_state.input_text = sentence
+    sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
     if predict_btn:
         prediction_class = fake_news(sentence)
@@ -59,6 +54,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 
