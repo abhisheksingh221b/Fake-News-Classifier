@@ -1,6 +1,4 @@
 import streamlit as st
-from PIL import Image
-import base64
 import pickle
 import re
 import nltk
@@ -8,6 +6,7 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+from PIL import Image
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -41,27 +40,17 @@ def fake_news(news):
     prediction = loaded_model.predict(vector_form1)
     return prediction
 
-def set_background_image(image_path):
-    encoded_image = base64.b64encode(open(image_path, 'rb').read()).decode()
-    st.markdown(
-        f"""
-        <style>
-        .reportview-container {{
-            background: url('data:image/jpg;base64,{encoded_image}');
-            background-size: cover;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
 def main():
-    set_background_image('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
-    
+    st.markdown("""
+        <style>
+        body {
+            background-image: url('yang-xia-aett4u0y8Qk-unsplash.jpg');
+            background-size: cover;
+        }
+        </style>
+        """, unsafe_allow_html=True)
     st.title('Fake News Identifier')
     st.subheader("Input the news content below")
-
-    # Input text
     sentence = st.text_area("", height=200)
     predict_btn = st.button("Predict")
     if predict_btn:
@@ -73,7 +62,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 
 
