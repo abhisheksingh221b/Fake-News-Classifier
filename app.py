@@ -44,7 +44,7 @@ def main():
     st.subheader("Input the news content below")
 
     # Set background image using HTML and CSS
-  image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
+    image = Image.open('yang-xia-aett4u0y8Qk-unsplash.jpg')  # Adjust the file path as needed
     st.image(image, use_column_width=True)
 
 
